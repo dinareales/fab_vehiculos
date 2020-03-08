@@ -29,6 +29,7 @@ app.use(logger('dev'));
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'app/public')));
 
 
 db.sequelize.sync();

@@ -1,5 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class='wrapper')
+    div(class='form-wrapper')
+      h1 Realiza tu pedido
+      form
+        div(class='firstName')
+          label(htmlfor='firstName') Nombre
+          input(type='text' class='' placeholder='Ingresa tu nombre..' name='firstName')
+        div(class='lastName')
+          label(htmlfor='lastName') Apellido
+          input(type='text' class='' placeholder='Ingresa tu apellido..' name='lastName')
+        div(class='cedula')
+          label(htmlfor='cedula') C&eacute;dula
+          input(type='number' class='' placeholder='Ingresa tu cédula' name='cedula')
+        div(class='typeVeh')
+          label(for='typeVeh') Tipo de Vehiculo
+          select(class='' name='typeVeh')
+            option(value='Renault') Renault
+            option(value='Chevrolet') Chevrolet
+            option(value='Ford') Ford
+            option(value='Toyota') Toyota
+        div(class='quantity')
+          label(htmlfor='quantity') Cantidad
+          input(type='number' class='' placeholder='Ingresa la cantidad' name='quantity')
+        div(class='send')
+          button(type='submit') Enviar
+
+
