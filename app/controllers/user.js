@@ -73,7 +73,16 @@ exports.create = (req, res) => {
 
         cars["sum"] = sumatoria;
         console.log(cars);
-
+        if (day === "Saturday" && cars["sum"] > 4){
+            res.status(400).send({
+                message: "Su solicitud no podra entregarse el dia de hoy"
+            });
+            return;
+        }
+         //traer los horarios disponibles para la fecha actual
+        //compararlo con la sumatoria de horas necesarias para el pedido
+        // si se cumplen las condiciones se crea la orden con la fecha de entrega
+        create_user();
         }).catch(function (err) {
             res.status(500).send({
                 message:
@@ -81,11 +90,25 @@ exports.create = (req, res) => {
             });
         });
 
+};
+
+let consult_cars = () => {
+   return  Cars.findAll()
+        .then(data => {
+            return data
+        })
+        .catch(err => {
+          return err;
+        });
+};
+
+let create_user = (body) => {
+
     // Create a user
     const user = {
-        name: req.body.name,
-        lastName: req.body.lastName,
-        dni: req.body.dni
+        name: body.name,
+        lastName: body.lastName,
+        dni: body.dni
     };
 
     // Save user in the database
@@ -98,15 +121,5 @@ exports.create = (req, res) => {
                 message:
                     err.message || "A ocurrido un error mientras se crea el usuario"
             });
-        });
-};
-
-let consult_cars = () => {
-   return  Cars.findAll()
-        .then(data => {
-            return data
-        })
-        .catch(err => {
-          return err;
         });
 };
