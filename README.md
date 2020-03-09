@@ -1,5 +1,5 @@
 ## Tecnologias
-express js  , orm sequelize, vuejsgit   
+express js  , orm sequelize, vue js   
 ## Iniciar proyecto
 ```
 npm install
