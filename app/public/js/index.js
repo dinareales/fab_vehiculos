@@ -13,10 +13,10 @@ new Vue({
             name: '',
             lastName: '',
             dni: '',
-            quantityRenault: '',
-            quantityChevrolet: '',
-            quantityFord: '',
-            quantityToyota: '',
+            quantityRenault: 0,
+            quantityChevrolet: 0,
+            quantityFord: 0,
+            quantityToyota: 0,
         }
     },
     methods: {
@@ -36,7 +36,11 @@ new Vue({
             axios.post('http://localhost:8080/api/user',{
                 name: this.model.name,
                 lastName: this.model.lastName,
-                dni: this.model.dni
+                dni: this.model.dni,
+                renault: this.model.quantityRenault,
+                chevrolet: this.model.quantityChevrolet,
+                ford: this.model.quantityFord,
+                toyota: this.model.quantityToyota,
             })
                 .then(function (response) {
                     console.log("respuesta servidor");
@@ -44,6 +48,7 @@ new Vue({
                 })
                 .catch(function (error) {
                     console.log("fallo todo"+ error);
+                    alert(error.response.data.message);
                 })
         }
     }
