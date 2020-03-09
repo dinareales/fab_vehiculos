@@ -1,12 +1,22 @@
 const db = require("../models");
 const User = db.user;
 const Cars = db.cars;
+var moment = require('moment');
+
 
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
     // Validate request
     let body = req.body;
+    //Validacion no se trabaja el domingo
+    let day = moment().format('dddd');
+    if(day === 'Sunday'){
+        res.status(400).send({
+            message: "hoy no trabajo, mañana si"
+        });
+        return;
+    }
     if (!body.dni) {
         res.status(400).send({
             message: "El contenido de la cedula no puede estar vacio!"
@@ -36,6 +46,7 @@ exports.create = (req, res) => {
 
     consult_cars().then(function (resp_cars) {
            let cars = [];
+           let sumatoria = 0
             resp_cars.map(car => {
                 let orders = {};
                 orders["brand"] = car.brand;
@@ -55,10 +66,12 @@ exports.create = (req, res) => {
                 }
 
                 if(orders.sum_hours) {
+                    sumatoria =  orders["sum_hours"] + sumatoria;
                     cars.push(orders);
                 }
             });
-        console.log("este es el que imporat");
+
+        cars["sum"] = sumatoria;
         console.log(cars);
 
         }).catch(function (err) {

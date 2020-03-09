@@ -6,6 +6,7 @@ var logger = require('morgan');
 var path = require('path');
 const db = require("./app/models");
 
+
 var indexRouter = require('./app/routes/index');
 //var tutoRouter = require('./app/routes/tutorial.routes');
 var userRouter = require('./app/routes/user');
