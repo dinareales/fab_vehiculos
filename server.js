@@ -6,15 +6,11 @@ var logger = require('morgan');
 var path = require('path');
 const db = require("./app/models");
 
-
 var indexRouter = require('./app/routes/index');
-var tutoRouter = require('./app/routes/tutorial.routes');
+//var tutoRouter = require('./app/routes/tutorial.routes');
+var userRouter = require('./app/routes/user');
 
 const app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'app/views'));
-app.set('view engine', 'pug');
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -31,18 +27,15 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'app/public')));
 
-
 db.sequelize.sync();
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });
 
-
 app.use('/', indexRouter);
-app.use('/api/tutorials', tutoRouter);
-
-
+//app.use('/api/tutorials', tutoRouter);
+app.use('/api/user', userRouter);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

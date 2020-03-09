@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href='/stylesheets/style.css'>
+</head>
+<body>
+<div id="app" class="wrapper">
+            <div class="form-wrapper">
+                <h1>Realiza tu pedido</h1>
+                <vue-form :state="formstate" @submit.prevent="onSubmit">
+                    <div class="left">
+                        <label for="firstName">Nombre</label>
+                        <input
+                                id="firstName"
+                                type="text"
+                                class=""
+                                placeholder="Ingresa tu nombre.."
+                                v-model.lazy="model.name"
+                        />
+                    </div>
+                    <div class="right">
+                        <label for="lastName">Apellido</label>
+                        <input
+                                id="lastName"
+                                type="text"
+                                class=""
+                                placeholder="Ingresa tu apellido.."
+                                v-model.lazy="model.lastName"
+                        />
+                    </div>
+                    <div class="cedula">
+                        <label for="cedula">Cédula</label>
+                        <input
+                                id="cedula"
+                                type="number"
+                                class=""
+                                placeholder="Ingresa tu cédula"
+                                v-model.lazy="model.dni"
+                        />
+                    </div>
+                    <div class="left">
+                        <label for="renault">Tipo de Vehiculo</label>
+                        <input
+                                id="renault"
+                                type="text"
+                                class=""
+                                value="Renault"
+                                disabled/>
+                    </div>
+                    <div class="right">
+                        <label for="quantity">Cantidad</label>
+                        <input
+                                id="quantity"
+                                type="number"
+                                class=""
+                                placeholder="Ingresa la cantidad"
+                                min="1"
+                                max="10"
+                                v-model.lazy="model.quantityRenault"
+
+                        />
+                    </div>
+                    <div class="left">
+                        <input
+                                type="text"
+                                class=""
+                                name="chevrolet"
+                                value="Chevrolet"
+                                disabled/>
+                    </div>
+                    <div class="right">
+                        <input
+                                type="number"
+                                class=""
+                                placeholder="Ingresa la cantidad"
+                                min="1"
+                                max="10"
+                                v-model.lazy="model.quantityChevrolet"
+                        />
+                    </div>
+                    <div class="left">
+                        <input
+                                id="ford"
+                                type="text"
+                                class=""
+                                name="ford"
+                                value="Ford"
+                                disabled/>
+                    </div>
+                    <div class="right">
+                        <input
+                                type="number"
+                                class=""
+                                placeholder="Ingresa la cantidad"
+                                min="1"
+                                max="10"
+                                v-model.lazy="model.quantityFord"
+                        />
+                    </div>
+                    <div class="left">
+                        <input
+                                id="toyota"
+                                type="text"
+                                class=""
+                                name="toyota"
+                                value="Toyota"
+                                disabled/>
+                    </div>
+                    <div class="right">
+                        <input
+                                type="number"
+                                class=""
+                                placeholder="Ingresa la cantidad"
+                                min="1"
+                                max="10"
+                                v-model.lazy="model.quantityToyota"
+                        />
+                    </div>
+
+                    <div class="send">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </vue-form>
+        </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+<script src="https://rawgit.com/fergaldoyle/vue-form/master/dist/vue-form.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

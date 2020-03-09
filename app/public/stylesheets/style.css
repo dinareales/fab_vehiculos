@@ -72,7 +72,7 @@ input.error, select.error{
   display: relative;
 }
 
-.firstName {
+.left {
   margin-right: 1%;
 }
 
@@ -80,8 +80,8 @@ input.error, select.error{
   margin-left: 1%;
 }
 
-.firstName,
-.lastName,
+.left,
+.right,
 .cedula,
 .typeVeh,
 .quantity{
@@ -90,8 +90,8 @@ input.error, select.error{
   margin-bottom: 15px;
 }
 
-.firstName,
-.lastName {
+.left,
+.right {
   width: 49%;
 }
 
