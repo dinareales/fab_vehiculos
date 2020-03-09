@@ -9,12 +9,13 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         {
-            freezeTableName: true,
+            classMethods: {
+                associate: function(models) {
+                    // associations can be defined here
+                    Schedule.belongsTo(models.business);
+                }
+            }
         });
-
-    Schedule.associate = (models) => {
-        Schedule.belongsTo(models.business);
-    };
 
     return Schedule;
 };

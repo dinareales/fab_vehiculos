@@ -2,21 +2,19 @@ module.exports = (sequelize, DataTypes) => {
     const Business = sequelize.define("business", {
         name: {
             type: DataTypes.STRING,
-            defaultValue: 'empresa xyz'
         },
         nit: {
             type: DataTypes.STRING,
-            defaultValue: '459672123-1'
         },
     },
         {
-            freezeTableName: true,
+            classMethods: {
+                associate: function(models) {
+                    Business.hasMany(models.schedule);
+                }
+            }
         }
     );
-
-    Business.associate = (models) => {
-        Business.hasMany(models.schedule);
-    };
 
     return Business;
 };
