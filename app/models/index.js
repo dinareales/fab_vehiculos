@@ -22,5 +22,6 @@ db.sequelize = sequelize;
 db.user = require("./user.js")(sequelize, Sequelize);
 db.business = require("./business.js")(sequelize, Sequelize);
 db.schedule = require("./schedule.js")(sequelize, Sequelize);
+db.schedule = require("./cars.js")(sequelize, Sequelize);
 
 module.exports = db;
