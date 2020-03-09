@@ -44,6 +44,7 @@ new Vue({
             })
                 .then(function (response) {
                     console.log("respuesta servidor");
+                    alert("su orden ha sido creada y sera entregada en ...");
                     console.log(response);
                 })
                 .catch(function (error) {

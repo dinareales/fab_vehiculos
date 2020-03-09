@@ -82,7 +82,7 @@ exports.create = (req, res) => {
          //traer los horarios disponibles para la fecha actual
         //compararlo con la sumatoria de horas necesarias para el pedido
         // si se cumplen las condiciones se crea la orden con la fecha de entrega
-        create_user();
+        create_user(body, res);
         }).catch(function (err) {
             res.status(500).send({
                 message:
@@ -92,6 +92,10 @@ exports.create = (req, res) => {
 
 };
 
+/**
+ *
+ * @returns {Promise<T>}
+ */
 let consult_cars = () => {
    return  Cars.findAll()
         .then(data => {
@@ -102,7 +106,12 @@ let consult_cars = () => {
         });
 };
 
-let create_user = (body) => {
+/**
+ *
+ * @param body
+ * @param res
+ */
+let create_user = (body,res) => {
 
     // Create a user
     const user = {
